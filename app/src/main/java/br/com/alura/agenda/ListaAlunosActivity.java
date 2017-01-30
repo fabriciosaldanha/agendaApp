@@ -1,5 +1,6 @@
 package br.com.alura.agenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
@@ -18,12 +21,22 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        String[] alunos = {"Fabricio","rogenila","alexadre","bernardo"};
+        String[] alunos = {"Fabricio","rogenila","alexadre","bernardo","Rogielle","Riso","Belém","Margareth","José","Fatima","Marcelo","Gabriela"};
         ListView listaAlunos = (ListView) findViewById(R.id.lista_alunos);
 
         ArrayAdapter adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, alunos );
 
         listaAlunos.setAdapter( adapter );
+
+        Button botaoNovoAluno = (Button)findViewById(R.id.novo_aluno);
+
+        botaoNovoAluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent vaiParaFormulario = new Intent( ListaAlunosActivity.this, FormularioActivity.class );
+                startActivity(vaiParaFormulario);
+            }
+        });
     }
 
 }
