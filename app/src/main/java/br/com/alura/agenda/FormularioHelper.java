@@ -17,9 +17,8 @@ public class FormularioHelper {
     private final EditText campoSite;
     private final EditText campoEmail;
     private final RatingBar campoNota;
-    private FormularioActivity activity;
 
-    public FormularioHelper(FormularioActivity formularioActivity){
+    public FormularioHelper(FormularioActivity activity){
         campoNome = (EditText)activity.findViewById( R.id.formulario_nome );
         campoEndereco = (EditText)activity.findViewById( R.id.formulario_endereco );
         campoTelefone = (EditText)activity.findViewById( R.id.formulario_telefone );
@@ -35,7 +34,7 @@ public class FormularioHelper {
         aluno.setTelefone( campoTelefone.getText().toString() );
         aluno.setSite( campoSite.getText().toString() );
         aluno.setEmail( campoEmail.getText().toString() );
-        aluno.setNota( campoNota.getRating() );
+        aluno.setNota( campoNota.getProgress() );
         return aluno;
     }
 }
