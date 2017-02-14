@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 import br.com.alura.agenda.modelo.Aluno;
-import br.com.alura.agenda.dao.AlunoDao;
+import br.com.alura.agenda.dao.AlunoDAO;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -23,7 +25,14 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario);
+
         helper = new FormularioHelper( this );
+
+        Intent intent = getIntent();
+        Aluno aluno = (Aluno)intent.getSerializableExtra("aluno");
+        if ( aluno != null ){
+            helper.preencheFormulario( aluno );
+        }
     }
 
     @Override
@@ -38,7 +47,7 @@ public class FormularioActivity extends AppCompatActivity {
         switch ( item.getItemId() ) {
             case R.id.menu_formulario_ok:
                 Aluno aluno = helper.pegaAluno();
-                AlunoDao dao = new AlunoDao( this );
+                AlunoDAO dao = new AlunoDAO( this );
                 dao.insere( aluno );
                 dao.close();
 

@@ -3,7 +3,7 @@ package br.com.alura.agenda;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
-import br.com.alura.agenda.br.com.alura.agenda.modelo.Aluno;
+import br.com.alura.agenda.modelo.Aluno;
 
 /**
  * Created by Fabricio on 29/01/2017.
@@ -36,5 +36,14 @@ public class FormularioHelper {
         aluno.setEmail( campoEmail.getText().toString() );
         aluno.setNota( campoNota.getProgress() );
         return aluno;
+    }
+
+    public void preencheFormulario(Aluno aluno) {
+        campoNome.setText( aluno.getNome() );
+        campoEndereco.setText( aluno.
+        campoTelefone.setText( aluno.
+        campoSite.setText( aluno.
+        campoEmail.setText( aluno.
+        campoNota.setText( aluno.
     }
 }
